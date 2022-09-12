@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userController;
+use App\Models\user;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/user',[userController::class,'index'])->name('create-user');
+Route::get('/user/view',[userController::class,'view']);
+Route::post('/user',[userController::class,'store']);
+Route::get('user/delete/{id}',[userController::class,'delete'])->name('user-delete');
+Route::get('/user/edit/{id}',[userController::class,'edit'])->name('user-edit');
+Route::post('/user/update/{id}',[userController::class,'update'])->name('user-update');
